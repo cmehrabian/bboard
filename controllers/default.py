@@ -17,6 +17,8 @@ def index():
     posts = db().select(db.bboard.ALL)
     return dict(posts=posts)
 
+@auth.requires_login()
+
 def add():
     """Add a post"""
     form = SQLFORM(db.bboard)
