@@ -17,6 +17,15 @@ def index():
     posts = db().select(db.bboard.ALL)
     return dict(posts=posts)
 
+def add():
+    """Add a post"""
+    form = SQLFORM(db.bboard)
+    if form.process().accepted:
+        #Successful
+        session.flash = T('Added')
+        redirect(URL('default', 'index'))
+    return dict(form=form)
+
 
 def user():
     """
