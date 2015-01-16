@@ -9,7 +9,13 @@
 
 <ul>
 {{for p in posts:}}
-<li>Posts by: {{=p.name}}, posted on {{=p.date_posted}}</li>
+<li>Posts by: {{=p.name}}, posted on {{=p.date_posted}}
+({{=A('Read', _href=URL('default', 'view', args=[p.id]))}})
+<!-- ({{=A('Read', _href=URL('index', 'view', vars ={'id': p.id}))}}) -->
+<!-- for hmwk only show this delete button if you were the creator -->
+({{=A('Delete', _href=URL('default', 'delete', args=[p.id]))}}) 
+
+</li>
 {{pass}}
 </ul>
 
